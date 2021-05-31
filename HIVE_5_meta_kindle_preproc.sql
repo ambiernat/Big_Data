@@ -1,6 +1,5 @@
 
 drop table if exists projectdb.meta_kindle_all_cat_v2;
-
 create table projectdb.meta_kindle_all_cat_v2
 as
 with q5 as (
