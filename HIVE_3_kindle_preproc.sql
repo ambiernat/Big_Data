@@ -31,7 +31,7 @@ drop table if exists projectdb.kindle_all_v5;
 
 create table projectdb.kindle_all_v5
 as
-with q4 as(
+with q3 as(
   
   SELECT 
 		a.overall,
@@ -46,26 +46,7 @@ with q4 as(
 		a.unixreviewtime,
   		a.asin,
   		a.count_asin,
-  		a.mean_review,
-		AVG(a.count_asin) OVER (PARTITION BY a.asin) as mean_no_reviews
-  FROM q3 a  
-),
-
-q3 as(
-  
-  SELECT 
-		a.overall,
-		a.vote,
-		a.verified,
-		a.reviewerid,
-		a.style,
-		a.reviewtext,
-		a.summary,
-		a.unixreviewtime,
-  		a.asin,
-  		a.count_asin,
-  		a.mean_review,
-		AVG(a.count_asin) OVER (PARTITION BY a.asin) as mean_no_reviews
+  		a.mean_review
   FROM q2 a  
 ),
 
@@ -102,5 +83,5 @@ q1 as(
   where a.verified = true
 )
 
-select * from q4
+select * from q3
 where count_asin >= 10
