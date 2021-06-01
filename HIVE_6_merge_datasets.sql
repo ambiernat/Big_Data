@@ -43,11 +43,10 @@ drop table if exists projectdb.reduced_asin_hive_analysis;
 -- group by asin; this is to do some aggregations and analyses in Hive
 create table projectdb.reduced_asin_hive_analysis
 as
-select distinct 		
-		a.overall,
-		a.reviewerid,
-		a.reviewtext,
-  		a.asin,
-		a.count_asin,
-		a.mean_review
+select 
+	asin,
+	overall, 
+	category,
+	count_asin,
+	mean_review
 from projectdb.kindle_and_meta_merged;
