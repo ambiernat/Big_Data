@@ -43,7 +43,7 @@ drop table if exists projectdb.reduced_asin_hive_analysis;
 -- group by asin; this is to do some aggregations and analyses in Hive
 create table projectdb.reduced_asin_hive_analysis
 as
-select 
+select distinct
 	asin,
 	overall, 
 	category,
